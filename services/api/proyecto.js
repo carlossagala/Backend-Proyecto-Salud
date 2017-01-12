@@ -1,3 +1,6 @@
+'use strict'
+
+
 // Obtengo el modulo de express
 const express = require('express');
 // Obtengo el router, para crear rutas personalizadas..
@@ -11,8 +14,8 @@ router.use((req, res, next) => {
   next();
 });
 
-// La ruta seria '/API/proyecto' --> devuelve un json con todos los proyectos
-router.get('/proyecto', (req, res) => {
+
+router.get('/getAll', (req, res) => {
   proyectoDAO.obtenerTodosLosProyectos().then(proyectos=>{
     res.json(proyectos);
   }).catch(err=>{
@@ -20,13 +23,24 @@ router.get('/proyecto', (req, res) => {
   });
 });
 
-// La ruta seria '/API/proyecto' --> crea un proyecto nuevo...
-router.post('/proyecto', (req, res) => {
+router.get('/getById/:id', (req, res) => {
+  proyectoDAO.obtenerProyecto(req.params.id).then(proyecto=>{
+    res.json(proyecto);
+  }).catch(err=>{
+    res.json({ status:500,mensaje:'Error al obtener el proyecto' });
+  });
+});
+
+// La ruta seria '/proyecto/save' --> crea un proyecto nuevo...
+router.post('/save', (req, res) => {
   proyectoDAO.guardarProyecto(req.body).then(()=>{
     res.json({ status: 200 , mensaje : 'Se guardo el proyecto' });
   }).catch(err=>{
     res.json({ status: 500 , mensaje : 'Error al guardar el proyecto' });
   });
 });
+
+
+
 
 module.exports = router

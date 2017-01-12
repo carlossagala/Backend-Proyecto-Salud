@@ -1,3 +1,5 @@
+'use strict'
+
 // Obtengo el modulo de http para crear el servidor...
 const http = require('http');
 // Obtengo el modulo de express...
@@ -19,7 +21,10 @@ const utils = require('./utils/utils');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // Middleware para el API de proyecto
-app.use('/API', proyectoAPI);
+//app.use('/API', proyectoAPI);
+
+//se cambio el url a proyecto
+app.use('/proyecto', proyectoAPI)
 
 // Llama la funcion de utils para crear la conexion con mongoDB...
 utils.crearConexionConMongoDB().then(()=>{
