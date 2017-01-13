@@ -71,6 +71,20 @@ module.exports = {
 
       })
     })
+  },
+
+  actualizarProyecto : (idProject, updatedProject)=>{
+    return new Promise ((resolve,reject)=>{
+      Proyecto.findByIdAndUpdate(idProject,updatedProject,(err,proyectoActualizado)=>{
+        if(err){
+          reject(err);
+        }
+        //coloco el nombre para probar cual se actualizo
+        //cambiar campo en caso de que tambien se pueda actualizar el nombre
+        console.log("se actualizo el proyecto" + updatedProject.name)
+        resolve();
+      })
+    })
   }
 
 }

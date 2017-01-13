@@ -46,6 +46,15 @@ router.delete('/delete/:id',(req,res)=>{
 });
 
 
+router.put('/update/:id',(req,res)=>{
+  proyectoDAO.actualizarProyecto(req.params.id, req.body).then(()=>{
+    res.json({status: 200 , mensaje: 'se actualizo el proyecto'});
+  }).catch(err=>{
+    res.json({status: 500, mensaje: 'fallo al actualizar el proyecto'})
+  });
+});
+
+
 
 
 module.exports = router
