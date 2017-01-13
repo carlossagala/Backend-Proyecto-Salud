@@ -1,6 +1,3 @@
-'use strict'
-
-
 // Obtengo el modulo de express
 const express = require('express');
 // Obtengo el router, para crear rutas personalizadas..
@@ -37,6 +34,14 @@ router.post('/save', (req, res) => {
     res.json({ status: 200 , mensaje : 'Se guardo el proyecto' });
   }).catch(err=>{
     res.json({ status: 500 , mensaje : 'Error al guardar el proyecto' });
+  });
+});
+
+router.delete('/delete/:id',(req,res)=>{
+  proyectoDAO.borrarProyecto(req.params.id).then(()=>{
+    res.json({status: 200 , mensaje: 'Se borro el proyecto'});
+  }).catch(err=>{
+    res.json({status: 500, mensaje: 'fallo al tratar de borrar el proyecto'})
   });
 });
 

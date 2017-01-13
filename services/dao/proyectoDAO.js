@@ -51,6 +51,26 @@ module.exports = {
         resolve();
       });
     });
+  },
+
+  borrarProyecto : (idProyect)=>{
+    return new Promise ((resolve,reject)=>{
+      Proyecto.findById(idProyect,(err,proyecto)=>{
+        if(err){
+          reject(err);
+        }
+
+        proyecto.activo = 0;
+        proyecto.save((err,res)=>{
+          if(err){
+            reject(err);
+          }
+          console.log("se dio de baja logica al proyecto "+ proyecto.name)
+          resolve();
+        })
+
+      })
+    })
   }
 
 }

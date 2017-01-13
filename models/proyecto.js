@@ -8,8 +8,9 @@ const Schema = mongoose.Schema;
 //const ProyectoSchema = new Schema({ title: String ,estado: String,tipo: String },{ collection:'proyecto' });
 
 
-
-const ProyectoSchema = new Schema({ name: String,
+//el proyecto todavia esta activo si el campo es 1 y 0 si no lo esta.
+const ProyectoSchema = new Schema({ activo: {type: Number, default: 1 }, 
+									name: String,
 									code: String,
 									type: String, 
 									leader:{ mail: String,
