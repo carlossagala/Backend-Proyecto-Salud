@@ -37,17 +37,17 @@ module.exports = {
   guardarProyecto : (obj)=>{
     return new Promise((resolve,reject)=>{
       let proyecto = new Proyecto();
-     
+      
       proyecto.name = obj.name;
       proyecto.code = obj.code;
       proyecto.type = obj.type;
       proyecto.leader = obj.leader;
-     
-      
+
       proyecto.save((err,res)=>{
         if(err){
           reject(err);
         }
+        console.log("se guardo el proyecto:"+ proyecto);
         resolve();
       });
     });
