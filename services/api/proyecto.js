@@ -7,6 +7,10 @@ const proyectoDAO = require('../dao/proyectoDAO');
 
 // Middleware que se ejecuta cada vez que entran a la API
 router.use((req, res, next) => {
+  //TODO Restringir el origen al momento de salir a Producción.
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   console.log('Se utiliza el API de proyecto');
   next();
 });
