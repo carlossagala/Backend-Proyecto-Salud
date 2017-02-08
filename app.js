@@ -12,6 +12,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 // Obtengo el modulo propio del api de proyecto
 const proyectoAPI = require('./services/api/proyecto');
+const detailedProjectAPI = require('./services/api/projectDetail');
 // Creo el servidor de node
 const server = http.createServer(app);
 // Obtengo un modulo propio de utilidades , funciones de utilidad, por ejemplo la conexion en MongoDB
@@ -24,7 +25,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use('/API', proyectoAPI);
 
 //se cambio el url a proyecto
-app.use('/proyecto', proyectoAPI)
+app.use('/proyecto', proyectoAPI);
+app.use('/proyectoDetalle', detailedProjectAPI);
 
 // Llama la funcion de utils para crear la conexion con mongoDB...
 utils.crearConexionConMongoDB().then(()=>{

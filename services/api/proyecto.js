@@ -34,16 +34,16 @@ router.get('/getById/:id', (req, res) => {
 
 // La ruta seria '/proyecto/save' --> crea un proyecto nuevo...
 router.post('/save', (req, res) => {
-  proyectoDAO.guardarProyecto(req.body).then(()=>{
-    res.json({ status: 200 , mensaje : 'Se guardo el proyecto' });
+  proyectoDAO.guardarProyecto(req.body).then((result)=>{
+    res.json({ status: 200 , mensaje : 'Se guardo el proyecto', id: result });
   }).catch(err=>{
     res.json({ status: 500 , mensaje : 'Error al guardar el proyecto' });
   });
 });
 
 router.delete('/delete/:id',(req,res)=>{
-  proyectoDAO.borrarProyecto(req.params.id).then(()=>{
-    res.json({status: 200 , mensaje: 'Se borro el proyecto'});
+  proyectoDAO.borrarProyecto(req.params.id).then((result)=>{
+    res.json({status: 200 , mensaje: 'Se borro el proyecto', id: result});
   }).catch(err=>{
     res.json({status: 500, mensaje: 'fallo al tratar de borrar el proyecto'})
   });
@@ -51,8 +51,8 @@ router.delete('/delete/:id',(req,res)=>{
 
 
 router.put('/update/:id',(req,res)=>{
-  proyectoDAO.actualizarProyecto(req.params.id, req.body).then(()=>{
-    res.json({status: 200 , mensaje: 'se actualizo el proyecto'});
+  proyectoDAO.actualizarProyecto(req.params.id, req.body).then((result)=>{
+    res.json({status: 200 , mensaje: 'se actualizo el proyecto', id: result});
   }).catch(err=>{
     res.json({status: 500, mensaje: 'fallo al actualizar el proyecto'})
   });

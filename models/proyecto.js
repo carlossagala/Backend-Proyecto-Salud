@@ -9,12 +9,12 @@ const Schema = mongoose.Schema;
 
 
 //el proyecto todavia esta activo si el campo es 1 y 0 si no lo esta.
-const ProyectoSchema = new Schema({ activo: {type: Number, default: 1 }, 
+const ProyectoSchema = new Schema({ activo: {type: Number, default: 1 },
 									name: String,
 									code: String,
-									type: String, 
+									type: String,
 									leader:{ mail: String,
-									name: String 
+									name: String
 								}});
 
 module.exports = mongoose.model('Proyecto', ProyectoSchema);

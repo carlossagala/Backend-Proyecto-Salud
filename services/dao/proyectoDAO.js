@@ -37,7 +37,7 @@ module.exports = {
   guardarProyecto : (obj)=>{
     return new Promise((resolve,reject)=>{
       let proyecto = new Proyecto();
-      
+
       proyecto.name = obj.name;
       proyecto.code = obj.code;
       proyecto.type = obj.type;
@@ -48,7 +48,7 @@ module.exports = {
           reject(err);
         }
         console.log("se guardo el proyecto:"+ proyecto);
-        resolve();
+        resolve(proyecto.id);
       });
     });
   },
@@ -66,7 +66,7 @@ module.exports = {
             reject(err);
           }
           console.log("se dio de baja logica al proyecto "+ proyecto.name)
-          resolve();
+          resolve(proyecto.id);
         })
 
       })
@@ -82,7 +82,7 @@ module.exports = {
         //coloco el nombre para probar cual se actualizo
         //cambiar campo en caso de que tambien se pueda actualizar el nombre
         console.log("se actualizo el proyecto" + updatedProject.name)
-        resolve();
+        resolve(updatedProject.id);
       })
     })
   }
