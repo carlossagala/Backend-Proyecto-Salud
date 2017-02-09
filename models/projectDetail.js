@@ -25,8 +25,7 @@ const ProjectDetailSchema = new Schema({
              action: String,
              expirationDate: Date,
              gdm: String
-           }]
-
+           }],
   });
 
 module.exports = mongoose.model('ProjectDetail', ProjectDetailSchema);

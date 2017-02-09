@@ -14,7 +14,7 @@ const ProyectoSchema = new Schema({ activo: {type: Number, default: 1 },
 									code: String,
 									type: String,
 									leader:{ mail: String,
-									name: String
+									name: String,
 								}});
 
 module.exports = mongoose.model('Proyecto', ProyectoSchema);

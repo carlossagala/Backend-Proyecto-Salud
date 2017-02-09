@@ -4,6 +4,17 @@ const ProjectDetail = require('../../models/projectDetail');
 
 module.exports = {
 
+  getByName: (projectName)=>{
+    return new Promise((resolve, reject) => {
+      ProjectDetail.find({name:projectName}, (err,project)=>{
+        if(err){
+          reject(err);
+        }
+        resolve(project)
+      })
+    })
+  },
+
   getDetailedProject : (idProject)=>{
     return new Promise((resolve,reject)=>{
       ProjectDetail.findById(idProject,(err,project)=>{

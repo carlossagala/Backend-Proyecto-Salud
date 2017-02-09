@@ -33,8 +33,16 @@ router.post('/save', (req, res) => {
 });
 
 router.get('/getById/:id', (req, res) => {
-  projectDetailDAO.getDetailedProject(req.params.id).then(proyecto=>{
-    res.json(proyecto);
+  projectDetailDAO.getDetailedProject(req.params.id).then(project=>{
+    res.json(project);
+  }).catch(err=>{
+    res.json({ status:500,mensaje:'Error al obtener el proyecto' });
+  });
+});
+
+router.get('/getByName/:name', (req, res) => {
+  projectDetailDAO.getByName(req.params.name).then(project=>{
+    res.json(project);
   }).catch(err=>{
     res.json({ status:500,mensaje:'Error al obtener el proyecto' });
   });
