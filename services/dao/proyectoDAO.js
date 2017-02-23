@@ -6,9 +6,10 @@ const Proyecto = require('../../models/proyecto');
 
 module.exports = {
 
-  obtenerProyecto : (idProject)=>{
+  obtenerProyecto : (codeProject)=>{
     return new Promise((resolve,reject)=>{
-      Proyecto.findById(idProject,(err,proyecto)=>{
+      //Proyecto.findById(idProject,(err,proyecto)=>{
+      Proyecto.find({code:codeProject}, (err,proyecto)=>{
         if(err){
           reject(err);
         }
