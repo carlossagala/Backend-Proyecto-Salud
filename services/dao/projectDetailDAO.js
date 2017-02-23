@@ -4,9 +4,9 @@ const ProjectDetail = require('../../models/projectDetail');
 
 module.exports = {
 
-  getByName: (projectName)=>{
+  getByCode: (projectCode)=>{
     return new Promise((resolve, reject) => {
-      ProjectDetail.find({name:projectName}, (err,project)=>{
+      ProjectDetail.find({code:projectCode}, (err,project)=>{
         if(err){
           reject(err);
         }
@@ -41,7 +41,7 @@ module.exports = {
     return new Promise((resolve,reject)=>{
       let project = new ProjectDetail();
 
-      project.name = obj.name;
+      project.code = obj.code;
       project.dateFrom = obj.dateFrom;
       project.dateTo = obj.dateTo;
       project.applications = obj.applications;

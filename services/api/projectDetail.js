@@ -40,8 +40,8 @@ router.get('/getById/:id', (req, res) => {
   });
 });
 
-router.get('/getByName/:name', (req, res) => {
-  projectDetailDAO.getByName(req.params.name).then(project=>{
+router.get('/getByCode/:code', (req, res) => {
+  projectDetailDAO.getByCode(req.params.code).then(project=>{
     res.json(project);
   }).catch(err=>{
     res.json({ status:500,mensaje:'Error al obtener el proyecto' });

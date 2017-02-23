@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 
 const ProjectDetailSchema = new Schema({
     active: { type: Number, default: 1 },
-    name: String,
+    code: String,
     dateFrom: Date,
     dateTo: Date,
     applications: [{ name: String,
